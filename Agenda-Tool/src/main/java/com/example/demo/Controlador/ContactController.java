@@ -1,7 +1,5 @@
 package com.example.demo.Controlador;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Repository.CrudContact;
 import com.example.demo.User.Contact;
 import com.example.demo.User.Status;
-import com.example.demo.User.User;
+
 
 @RestController
 public class ContactController {
@@ -30,7 +28,7 @@ public class ContactController {
 	}
 	
 	@PostMapping("/contact/update/{id}")
-	public Status loginUser(@PathVariable("id") long id, Model model, Contact contactUp) {
+	public Status updateContact(@PathVariable("id") long id, Model model, Contact contactUp) {
 		Contact contact = crudContact.findById(id)
 			      .orElseThrow(() -> new IllegalArgumentException("Invalid contact Id:" + id));
 			    
