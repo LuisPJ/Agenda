@@ -52,6 +52,18 @@
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.2.32</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-calendar</artifactId>
+			<version>v3-rev224-1.22.0</version>
+		</dependency>
+
+		<!-- Gmail Maven Dependency-->
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-gmail</artifactId>
+			<version>v1-rev65-1.18.0-rc</version>
+		</dependency>
 	</dependencies>
 
 	<build>
