@@ -3,9 +3,6 @@ package com.example.demo.User;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -19,9 +16,7 @@ public class Contact {
 	private @NotBlank String email;
 	private @NotBlank String telefono;
 	private @NotBlank String direccion;
-	@OneToOne
-	@JoinTable(name = "users", joinColumns = @JoinColumn(name = "id"))
-	public long userId;
+	private @NotBlank long userId;
 	
 	public Contact() {
 		super();

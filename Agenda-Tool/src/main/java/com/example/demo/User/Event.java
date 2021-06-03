@@ -8,9 +8,6 @@ import java.util.Arrays;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -28,9 +25,7 @@ public class Event {
 	private @NotBlank String fecha_inicio;
 	private @NotBlank String fecha_fin;
 	private @NotBlank String descripcion;
-	@ManyToMany
-	@JoinTable(name = "events", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name="id"))
-	public Contact[] contactos;
+	private Contact[] contactos;
 	/**
 	 * 
 	 */

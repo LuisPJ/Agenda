@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +25,7 @@ public class EventController {
 	}
 	
 	@PostMapping("/event/update/{id}")
-	public Status updateEvent(@PathVariable("id") long id, Model model, Event eventUp) {
+	public Status updateEvent(@PathVariable("id") long id, Model model, @Valid @RequestBody Event eventUp) {
 		Event evento = crudEvent.findById(id)
 			      .orElseThrow(() -> new IllegalArgumentException("Invalid event Id:" + id));
 			    
@@ -47,7 +48,7 @@ public class EventController {
 		return Status.SUCCESS;
 	}
 	
-	@DeleteMapping("/event/read/{id}")
+	@GetMapping("/event/read/{id}")
 	public Event getEvent(@PathVariable("id") long id) {
 		Event event = crudEvent.findById(id)
 			      .orElseThrow(() -> new IllegalArgumentException("Invalid event Id:" + id));

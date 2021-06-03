@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,10 +29,9 @@ public class ContactController {
 	}
 	
 	@PostMapping("/contact/update/{id}")
-	public Status updateContact(@PathVariable("id") long id, Model model, Contact contactUp) {
+	public Status updateContact(@PathVariable("id") long id, Model model, @Valid @RequestBody Contact contactUp) {
 		Contact contact = crudContact.findById(id)
 			      .orElseThrow(() -> new IllegalArgumentException("Invalid contact Id:" + id));
-			    
 				contact.setApellido(contactUp.getApellido());
 				contact.setDireccion(contactUp.getDireccion());
 				contact.setEmail(contactUp.getEmail());
@@ -50,7 +50,7 @@ public class ContactController {
 		return Status.SUCCESS;
 	}
 	
-	@DeleteMapping("/contact/read/{id}")
+	@GetMapping("/contact/read/{id}")
 	public Contact getUsers(@PathVariable("id") long id) {
 		Contact contact = crudContact.findById(id)
 			      .orElseThrow(() -> new IllegalArgumentException("Invalid contact Id:" + id));
